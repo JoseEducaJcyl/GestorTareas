@@ -38,6 +38,4 @@ RecyclerView.Adapter<TareaAdapter.VH>(){
         tareas = nuevas
         notifyDataSetChanged()
     }
-
-
 }
