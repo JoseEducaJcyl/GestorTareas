@@ -30,10 +30,13 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        tareas.add(Tarea(tareas.size+1,"Tarea${tareas.size+1}","", Prioridad.BAJA,
-            Estado.EN_CURSO))
+        tareas.add(Tarea(tareas.size+1,"Tarea${tareas.size+1}"))
 
-        adapter_recicler = TareaAdapter(tareas,{t -> t.estado = t.estado.siguiente()})
+        adapter_recicler = TareaAdapter(tareas) { tarea ->
+            tarea.estado = tarea.estado.siguiente()
+            adapter_recicler.notifyDataSetChanged()
+        }
+
         binding.rvtareas.layoutManager = LinearLayoutManager(this)
         binding.rvtareas.adapter=adapter_recicler
 
